@@ -96,12 +96,15 @@ export default function MaterialInteraction() {
                         dataKey="value"
                         cx="50%" cy="50%"
                         outerRadius={70} innerRadius={40}
-                        label={({ cx, cy, midAngle, innerRadius, outerRadius, value, name }) => {
-                          if (value < 5) return null
+                        label={({ cx, cy, midAngle, innerRadius, outerRadius, value }) => {
+                          if ((value as number) < 5) return null
                           const RADIAN = Math.PI / 180
-                          const radius = innerRadius + (outerRadius - innerRadius) * 0.5
-                          const x = cx + radius * Math.cos(-midAngle * RADIAN)
-                          const y = cy + radius * Math.sin(-midAngle * RADIAN)
+                          const mid = (midAngle as number) ?? 0
+                          const inner = innerRadius as number
+                          const outer = outerRadius as number
+                          const radius = inner + (outer - inner) * 0.5
+                          const x = (cx as number) + radius * Math.cos(-mid * RADIAN)
+                          const y = (cy as number) + radius * Math.sin(-mid * RADIAN)
                           return (
                             <text x={x} y={y} fill="white" textAnchor="middle" dominantBaseline="central"
                               fontSize={10} fontWeight="bold">

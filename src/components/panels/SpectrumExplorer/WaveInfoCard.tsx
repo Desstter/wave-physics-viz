@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { useAppStore } from '../../../store/appStore'
 import { WAVE_TYPES } from '../../../data/waveTypes'
 import { wavelength, photonEnergyEV } from '../../../physics/waveEquations'
