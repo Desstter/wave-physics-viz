@@ -75,11 +75,12 @@ export function attenuationCoefficient(
 }
 
 /**
- * Beer-Lambert attenuation: I = I₀ · exp(-α · d)
- * Returns the fraction of intensity remaining
+ * Beer-Lambert power attenuation for a field attenuation coefficient α:
+ * |E| = |E₀|·exp(-αd), therefore P/P₀ = exp(-2αd).
+ * Returns the fraction of power remaining.
  */
 export function beerLambert(alphaPerM: number, thicknessM: number): number {
-  return Math.exp(-alphaPerM * thicknessM)
+  return Math.exp(-2 * alphaPerM * thicknessM)
 }
 
 /**

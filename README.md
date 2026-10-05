@@ -1,84 +1,42 @@
-# Wave Physics Visualizer
+# Wave Physics
 
-An interactive physics education tool for exploring wave behavior across different media. Built with React, TypeScript, D3, and KaTeX for real-time visualization with rendered mathematical equations.
+Laboratorio educativo en español para explorar propagación electromagnética, espectro, interacción con materiales y presupuestos de enlace.
 
-## Overview
+## Modelo científico
 
-The app lets users explore the physics of waves interactively — adjusting parameters, comparing wave types, and seeing how waves propagate through different materials — all with live visual feedback and the corresponding equations displayed in proper mathematical notation.
+- Constantes SI exactas para `c`, `h` y `e`.
+- Relaciones `λ = c/f`, `E = hf`, expansión esférica y ecuación de Friis.
+- Propiedades de materiales según los ajustes `ε′r = a·fGHz^b` y `σ = c·fGHz^d` de ITU‑R P.2040.
+- Constante de propagación compleja en medios con pérdidas.
+- Reflexión de Fresnel, refracción de Snell y atenuación de potencia `exp(−2αd)`.
+- Suma incoherente de reflexiones internas para placas; las pilas de objetos combinan sus pérdidas de inserción.
 
-## Features
+El laboratorio separa deliberadamente la geometría real TX–RX de la animación visual comprimida. También muestra cuándo una frecuencia está fuera del rango de mediciones del material y cuándo la distancia incumple el criterio educativo de campo lejano `d ≥ 10λ`.
 
-### Simulation Panels
+## Áreas
 
-| Panel | Description |
-|-------|-------------|
-| **Propagation Simulator** | Real-time animation of wave propagation with adjustable frequency, amplitude, and wavelength |
-| **Material Interaction** | Visualize how waves reflect, refract, and attenuate in different materials |
-| **Spectrum Explorer** | Explore the electromagnetic and acoustic spectrums interactively |
-| **Comparison Mode** | Display multiple wave types side by side for direct comparison |
-| **Distance Calculator** | Calculate wave properties (period, velocity, energy) at any distance |
+1. **Laboratorio:** frecuencia continua, distancia, potencia, ángulo, polarización y hasta cuatro capas.
+2. **Espectro:** atlas logarítmico desde 3 Hz hasta 30 ZHz, relaciones fundamentales y referencias cotidianas.
+3. **Materiales:** catálogo ITU, balance R/T/A, profundidad de penetración y curvas de pérdida.
+4. **Enlace:** potencia recibida frente a distancia y presupuesto completo en dB.
+5. **Comparador:** dos tecnologías bajo exactamente el mismo escenario.
 
-### Physics Engine
+## Alcance y límites
 
-- Wave equations rendered with KaTeX
-- Material interaction models (reflection, refraction, absorption)
-- Multiple wave types: mechanical, electromagnetic, acoustic
-- Prebuilt material library with real physical constants
+Es un modelo determinista educativo, no un solver FDTD ni un sustituto de mediciones. Los objetos se consideran placas homogéneas, planas y de caras paralelas. No se inventan parámetros para humedad, armaduras, rugosidad, juntas, geometría de antena o multitrayecto. La absorción atmosférica específica —por ejemplo, alrededor de 60 GHz— requiere ITU‑R P.676 y no se incluye en el presupuesto básico.
 
-## Tech Stack
-
-- **React 19** with TypeScript
-- **Vite** — build tool and dev server
-- **D3.js** — canvas-based wave rendering
-- **KaTeX / react-katex** — mathematical equation display
-- **Recharts** — data charts
-- **Tailwind CSS** — styling
-- **Framer Motion** — UI animations
-- **Lucide React** — icons
-
-## Getting Started
+## Desarrollo
 
 ```bash
-# Clone the repo
-git clone https://github.com/Desstter/wave-physics-viz.git
-cd wave-physics-viz
-
-# Install dependencies
 npm install
-
-# Start the dev server
 npm run dev
+npm test
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+## Referencias primarias
 
-## Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build |
-| `npm run lint` | Lint source files |
-
-## Project Structure
-
-```
-src/
-├── components/
-│   ├── canvas/         # D3-powered wave rendering components
-│   ├── controls/       # Parameter control UI
-│   ├── layout/         # App shell and navigation
-│   ├── panels/         # Feature panels (simulator, spectrum, etc.)
-│   └── shared/         # Reusable UI components
-├── data/               # Materials library and wave type definitions
-├── hooks/              # Custom React hooks
-├── physics/            # Wave equations and material interaction models
-├── store/              # State management
-├── types/              # TypeScript type definitions
-└── utils/              # Helper functions
-```
-
-## License
-
-MIT
+- ITU‑R P.2040: efectos de materiales y estructuras sobre la propagación radioeléctrica.
+- ITU‑R P.676: atenuación por gases atmosféricos.
+- NIST: constantes fundamentales y espectro electromagnético.

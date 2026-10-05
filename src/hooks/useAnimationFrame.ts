@@ -4,7 +4,10 @@ export function useAnimationFrame(callback: (deltaMs: number) => void, active: b
   const rafId = useRef<number>(0)
   const lastTime = useRef<number>(0)
   const cb = useRef(callback)
-  cb.current = callback
+
+  useEffect(() => {
+    cb.current = callback
+  }, [callback])
 
   useEffect(() => {
     if (!active) return

@@ -21,7 +21,7 @@ interface AppStore {
 }
 
 export const useAppStore = create<AppStore>((set) => ({
-  activeSection: 'spectrum',
+  activeSection: 'simulator',
   setActiveSection: (activeSection) => set({ activeSection }),
   selectedWaveId: 'wifi_24',
   setSelectedWaveId: (selectedWaveId) => set({ selectedWaveId }),

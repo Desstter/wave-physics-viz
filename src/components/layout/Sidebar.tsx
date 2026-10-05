@@ -1,55 +1,48 @@
 import { useAppStore } from '../../store/appStore'
 import type { Section } from '../../types/simulation.types'
-import { Radio, Wifi, Layers, Ruler, GitCompare, Zap } from 'lucide-react'
+import { Radio, Waves, Layers3, Ruler, GitCompare, Atom } from 'lucide-react'
 import clsx from 'clsx'
 
 const NAV: Array<{ id: Section; label: string; icon: React.ReactNode; desc: string }> = [
-  { id: 'spectrum',  label: 'Spectrum',   icon: <Radio size={18} />,      desc: 'Full EM spectrum explorer' },
-  { id: 'simulator', label: 'Simulator',  icon: <Wifi size={18} />,       desc: 'Wave propagation' },
-  { id: 'materials', label: 'Materials',  icon: <Layers size={18} />,     desc: 'Wave-material interaction' },
-  { id: 'distance',  label: 'Distance',   icon: <Ruler size={18} />,      desc: 'Path loss & range' },
-  { id: 'compare',   label: 'Compare',    icon: <GitCompare size={18} />, desc: 'Side-by-side comparison' },
+  { id: 'simulator', label: 'Laboratorio', icon: <Waves size={17} />, desc: 'Propagación interactiva' },
+  { id: 'spectrum',  label: 'Espectro',    icon: <Radio size={17} />, desc: 'De radio a rayos gamma' },
+  { id: 'materials', label: 'Materiales',  icon: <Layers3 size={17} />, desc: 'Reflexión y absorción' },
+  { id: 'distance',  label: 'Enlace',      icon: <Ruler size={17} />, desc: 'Distancia y potencia' },
+  { id: 'compare',   label: 'Comparar',    icon: <GitCompare size={17} />, desc: 'Escenarios lado a lado' },
 ]
 
 export default function Sidebar() {
   const { activeSection, setActiveSection } = useAppStore()
 
   return (
-    <aside className="w-56 shrink-0 border-r border-gray-800 flex flex-col bg-gray-900 h-full min-h-screen">
-      {/* Logo */}
-      <div className="px-4 py-5 border-b border-gray-800 flex items-center gap-2">
-        <Zap size={20} className="text-indigo-400" />
+    <aside className="app-sidebar">
+      <div className="brand-lockup">
+        <div className="brand-mark"><Atom size={20} /></div>
         <div>
-          <div className="text-sm font-bold text-white leading-tight">Wave Physics</div>
-          <div className="text-xs text-gray-500">EM Spectrum Visualizer</div>
+          <div className="brand-name">Wave Physics</div>
+          <div className="brand-kicker">LABORATORIO · EM</div>
         </div>
       </div>
 
-      {/* Nav */}
-      <nav className="flex-1 py-3">
+      <nav className="app-nav" aria-label="Secciones del laboratorio">
         {NAV.map(({ id, label, icon, desc }) => (
           <button
             key={id}
             onClick={() => setActiveSection(id)}
-            className={clsx(
-              'w-full flex items-start gap-3 px-4 py-3 text-left transition-colors',
-              activeSection === id
-                ? 'bg-indigo-600/20 text-indigo-300 border-r-2 border-indigo-400'
-                : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200'
-            )}
+            className={clsx('nav-item', activeSection === id && 'is-active')}
           >
-            <span className="mt-0.5 shrink-0">{icon}</span>
-            <div>
-              <div className="text-sm font-medium leading-tight">{label}</div>
-              <div className="text-xs text-gray-500 mt-0.5">{desc}</div>
+            <span className="nav-icon">{icon}</span>
+            <div className="nav-copy">
+              <div className="nav-label">{label}</div>
+              <div className="nav-desc">{desc}</div>
             </div>
           </button>
         ))}
       </nav>
 
-      {/* Footer */}
-      <div className="px-4 py-3 border-t border-gray-800 text-xs text-gray-600">
-        Physics: ITU-R P.2040 · IEEE 802.11
+      <div className="sidebar-proof">
+        <span className="proof-dot" />
+        <div><strong>Modelo verificable</strong><br />ITU-R P.2040 · Friis · Fresnel</div>
       </div>
     </aside>
   )

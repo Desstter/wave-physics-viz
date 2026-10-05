@@ -6,12 +6,45 @@
   html, body, #root {
     @apply h-full;
   }
-  body {
-    @apply bg-gray-950 text-gray-100 font-sans;
-  }
+  body { @apply text-gray-100 font-sans; background: #080b0f; }
   * {
     @apply box-border;
   }
+}
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+
+.app-frame { min-height: 100vh; display: flex; background: #080b0f; color: #f4f7f5; }
+.app-main { min-width: 0; flex: 1; overflow-y: auto; }
+.app-sidebar { width: 248px; flex: 0 0 248px; min-height: 100vh; display: flex; flex-direction: column; padding: 22px 14px 16px; background: #0d1116; border-right: 1px solid #242a31; }
+.brand-lockup { display: flex; align-items: center; gap: 11px; padding: 3px 8px 26px; }
+.brand-mark { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; color: #080b0f; background: #d5ff5f; box-shadow: 0 0 30px rgba(213,255,95,.12); }
+.brand-name { font-weight: 760; letter-spacing: -.02em; }
+.brand-kicker { margin-top: 2px; color: #7f8994; font-size: 9px; font-weight: 700; letter-spacing: .19em; }
+.app-nav { display: flex; flex: 1; flex-direction: column; gap: 5px; }
+.nav-item { width: 100%; display: flex; align-items: center; gap: 11px; padding: 11px 12px; border: 1px solid transparent; border-radius: 10px; color: #7f8994; text-align: left; transition: .2s ease; }
+.nav-item:hover { color: #e8ece9; background: #151a20; }
+.nav-item.is-active { color: #f5f8f6; border-color: #303a31; background: linear-gradient(90deg, rgba(213,255,95,.1), rgba(213,255,95,.025)); }
+.nav-icon { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 7px; background: #171c22; }
+.is-active .nav-icon { color: #d5ff5f; background: #222a1f; }
+.nav-copy { min-width: 0; }
+.nav-label { font-size: 13px; font-weight: 680; }
+.nav-desc { margin-top: 1px; color: #68717b; font-size: 10px; }
+.sidebar-proof { display: flex; gap: 9px; padding: 13px 10px 4px; border-top: 1px solid #242a31; color: #68717b; font-size: 9px; line-height: 1.55; }
+.sidebar-proof strong { color: #aeb6ae; font-size: 10px; font-weight: 650; }
+.proof-dot { width: 6px; height: 6px; margin-top: 5px; border-radius: 50%; background: #d5ff5f; box-shadow: 0 0 12px rgba(213,255,95,.7); }
+
+@media (max-width: 760px) {
+  .app-frame { display: block; }
+  .app-sidebar { position: sticky; top: 0; z-index: 20; width: 100%; min-height: auto; padding: 10px 12px; border-right: 0; border-bottom: 1px solid #242a31; }
+  .brand-lockup { display: none; }
+  .app-nav { flex-direction: row; gap: 4px; overflow-x: auto; }
+  .nav-item { width: auto; min-width: 44px; justify-content: center; padding: 8px; }
+  .nav-copy, .sidebar-proof { display: none; }
+  .nav-icon { background: transparent; }
 }
 
 /* KaTeX override for dark backgrounds */

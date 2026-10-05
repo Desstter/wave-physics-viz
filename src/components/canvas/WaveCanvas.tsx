@@ -187,7 +187,7 @@ export default function WaveCanvas({ waveId, compact = false }: Props) {
       drawScaleBar(ctx, w, h, visualWavelength, realWavelength)
       drawLegend(ctx, w, h, showReflection, showTransmission)
     }
-  }, [w, h, timeSeconds, wave, slabs, showReflection, showTransmission, speedMultiplier, isPlaying])
+  }, [w, h, timeSeconds, wave, slabs, showReflection, showTransmission, speedMultiplier, isPlaying, compact])
 
   return (
     <canvas

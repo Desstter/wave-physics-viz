@@ -18,9 +18,9 @@ export default function AppShell() {
   }
 
   return (
-    <div className="flex h-full min-h-screen bg-gray-950 text-gray-100">
+    <div className="app-frame">
       <Sidebar />
-      <main className="flex-1 overflow-y-auto">
+      <main className="app-main">
         {sections[activeSection]}
       </main>
     </div>
