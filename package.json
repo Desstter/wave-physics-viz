@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "test": "vitest run",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -35,11 +36,23 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
-    "postcss": "^8.5.8",
+    "postcss": "8.5.28",
     "tailwindcss": "^3.4.19",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.57.0",
-    "vite": "^8.0.1",
-    "vitest": "^4.1.2"
+    "vite": "8.3.2",
+    "vitest": "4.1.11"
+  },
+  "overrides": {
+    "@babel/core@^7.0.0": "7.29.7",
+    "@humanfs/node@>=0 <1": "0.17.0",
+    "brace-expansion@^5.0.0": "5.0.12",
+    "@vitest/mocker@^4.0.0": "4.1.11",
+    "baseline-browser-mapping@^2.0.0": "2.11.27",
+    "brace-expansion@^1.0.0": "1.1.21",
+    "browserslist@^4.0.0": "4.29.3",
+    "js-yaml@^4.0.0": "4.3.2",
+    "nanoid@^3.0.0": "3.3.19",
+    "postcss-selector-parser@^6.0.0": "6.1.4"
   }
 }
